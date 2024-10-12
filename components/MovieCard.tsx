@@ -3,7 +3,10 @@ import React from "react";
 import { useRouter } from 'next/router'
 
 import { BsFillPlayFill } from 'react-icons/bs';
+import { BiChevronDown } from 'react-icons/bi';
+
 import FavoriteButton from "./FavoriteButton";
+import useInfoModal from '@/hooks/useInfoModal';
 
 interface MovieCardProps {
     data: Record<string, any>;
@@ -14,6 +17,7 @@ const MovieCard: React.FC<MovieCardProps> = ({
     }) => {
 
     const router = useRouter();
+    const { openModal } = useInfoModal();
 
     return (
         <div className="group bg-zinc-900 col-span relative h-[12vw]">
@@ -41,7 +45,27 @@ const MovieCard: React.FC<MovieCardProps> = ({
                             onClick={() => router.push(`/watch/${data?.id}`)}>
                             <BsFillPlayFill size={30}/>
                         </div>
-                            {/* <FavoriteButton movieId={data?.id}/> */}
+                            <FavoriteButton movieId={data?.id}/>
+                            <div 
+                            onClick={() => openModal(data?.id)}
+                            className="
+                                cursor-pointer
+                                ml-auto
+                                group/item
+                                w-6
+                                h-6
+                                lg:h-10
+                                border-white
+                                border-2
+                                rounded-full
+                                flex
+                                justify-center
+                                items-center
+                                transition
+                                hover:border-neutral-300
+                            ">
+                                <BiChevronDown className="text-white group-hover/item:text-neutral-300" size={30} />
+                            </div>
                     </div>
                         <p className="text-green-400 font-semibold mt-4">
                             New <span className="text-white">2023</span>
