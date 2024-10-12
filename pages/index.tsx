@@ -38,7 +38,7 @@ export default function Home() {
       <Billboard />
       <div className="pb-40">
         <MovieList title="Trending Now" data={movies} />
-        <MovieList title="My List" data={favorites} />
+        {/* <MovieList title="My List" data={favorites} /> */}
       </div>
       
       {/* <h1 className="text-4xl text-green-500">Netflix Clone</h1>
